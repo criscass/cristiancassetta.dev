@@ -1,0 +1,55 @@
+---
+const { text } = Astro.props;
+const { address } = Astro.props;
+import arrow2 from "../assets/SVG/arrow2.svg";
+import { Image } from "astro:assets";
+---
+
+<div>
+	<button class="bg-accent2 flex gap-8 px-20 py-8 rounded-xl shadow">
+		<Image src={arrow2} width="100" alt="An arrow pointing to the button from the left" class="arrow-in-button-left" />
+		<a href={address} target="_blank" rel="noopener noreferrer" class="text-neutral-900">{text}</a>
+		<Image src={arrow2} width="100" alt="An arrow pointing to the button from the right" class="arrow-in-button-right" />
+	</button>
+</div>
+
+<style>
+	.arrow-in-button-right {
+		height: 70px;
+		position: absolute;
+		top: 11px;
+		right: -70px;
+		opacity: 0;
+		transition: 0.5s cubic-bezier(0.47, 1.64, 0.41, 0.8);
+		pointer-events: none;
+	}
+	button:hover .arrow-in-button-right {
+		opacity: 1;
+		right: -20px;
+	}
+	.arrow-in-button-left {
+		height: 70px;
+		position: absolute;
+		top: 11px;
+		left: -70px;
+		opacity: 0;
+		transform: rotate(180deg);
+		transition: 0.5s cubic-bezier(0.47, 1.64, 0.41, 0.8);
+		pointer-events: none;
+	}
+	button:hover .arrow-in-button-left {
+		opacity: 1;
+		left: -20px;
+	}
+
+	button {
+		position: relative;
+	}
+	button:hover {
+		box-shadow: none;
+	}
+
+	a {
+		font-size: 1.3rem;
+	}
+</style>

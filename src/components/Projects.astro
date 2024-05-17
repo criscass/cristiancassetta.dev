@@ -1,0 +1,16 @@
+---
+import arrow from "../assets/SVG/arrow.svg";
+import { Image } from "astro:assets";
+---
+
+<section class="bg-accent1">
+	<Image
+		src={arrow}
+		height="300"
+		alt="An arrow pointing down"
+		class="h-40 sm:h-52 md:h-60 lg:h-72 ml-8 md:ml-16 xl:ml-36"
+	/>
+	<div class="px-12 py-24">
+		<h1 class="text-xl md:text-2xl text-neutral-700">My latest projects</h1>
+	</div>
+</section>

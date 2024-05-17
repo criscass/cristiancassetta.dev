@@ -1,0 +1,105 @@
+---
+import { Image } from "astro:assets";
+import landingPage from "../assets/images/screenshots/landing-page-yearbookings.png";
+import techLogos from "../assets/SVG/tech-logos.svg";
+import screenshotMobile from "../assets/images/screenshots/screenshot-mobile.png";
+import howItworks1 from "../assets/images/screenshots/how-it-works-1.png";
+import howItworks2 from "../assets/images/screenshots/how-it-works-2.png";
+import howItworks3 from "../assets/images/screenshots/how-it-works-3.png";
+import howItworks4 from "../assets/images/screenshots/how-it-works-4.png";
+import LinkButton from "../components/LinkButton.astro";
+---
+
+<section class="bg-accent1 px-4 sm:px-12 py-24">
+	<div class="flex flex-col sm:grid sm:grid-cols-12 items-center">
+		<div class="col-span-5">
+			<div class="border-s-2 px-4 mb-24 inline-flex flex-col">
+				<h2 class="text-2xl text-neutral-700 leading-8">Year bookings</h2>
+				<h3 class="text-xl text-neutral-700 leading-8">Web app</h3>
+			</div>
+			<!-- The Idea section -->
+			<p class="text-xl md:w-9/12 text-neutral-700 leading-10 mt-8 font-semibold">The idea</p>
+			<p class="text-xl md:w-9/12 text-neutral-700">
+				I built Yearbookings primarily for myself. I needed a place to keep track of my property bookings with a
+				minimalistic and uncluttered year view of all listings. While Google Calendar is great for everyday use and
+				essential to my life, I needed something separate that I could easily reference to see when my house could be
+				rented. Additionally, I didn't want to pay hefty monthly subscriptions for such a simple tool.
+			</p>
+		</div>
+		<div class="col-span-7 mt-16 sm:mt-2">
+			<Image src={landingPage} alt="The landing page of the yearbookings app" width="1400" quality="max" class="shadow" />
+		</div>
+	</div>
+
+	<!-- The tech stack section -->
+</section>
+<section class="bg-neutral-100 px-4 sm:px-12 py-24">
+	<div class="flex flex-col-reverse sm:grid sm:grid-cols-12 sm:gap-4 relative">
+		<div class="sm:col-span-4 mt-16 self-center sm:self-auto">
+			<Image src={techLogos} alt="a bunch of frameworks and tech logos" width="250" quality="max" />
+		</div>
+		<div class="sm:col-span-8 sm:w-9/12">
+			<p class="text-xl text-neutral-700 leading-10 mt-8 font-semibold">The tech stack</p>
+			<p class="text-xl text-neutral-700">
+				Recently, I've been pleasantly surprised by the simplicity and speed of Svelte.js, so I decided to build
+				Yearbookings with SvelteKit and TypeScript.
+			</p>
+			<p class="text-xl text-neutral-700 mt-4">
+				The core of the app is a function (calendify.ts) that takes a date and the bookings array and creates a month, which
+				consists of an array of weeks. Each week array contains either a number or an object of type Day, which includes all
+				the necessary information for booked and unbooked days.
+			</p>
+			<p class="text-xl text-neutral-700 mt-4">
+				I also used Tailwind CSS and Skeleton UI as a CSS framework. All form input validation is managed using a TypeScript
+				library called Zod. For the database, I chose Supabase, which also handles authentication.
+			</p>
+		</div>
+		<div class="absolute right-12 -top-64 sm:-top-72">
+			<Image
+				src={screenshotMobile}
+				alt="screenshot of the app yearbookings on a smartphone"
+				height="400"
+				class="shadow rounded-xl lg:rounded-3xl w-24 sm:w-28 lg:w-32"
+				quality="max"
+			/>
+		</div>
+	</div>
+</section>
+
+<!-- How it works section -->
+<section class="bg-accent1 px-4 sm:px-12 py-24 flex flex-col justify-center items-center gap-20">
+	<div class="sm:w-8/12">
+		<p class="text-xl text-neutral-700 leading-10 mt-8 font-semibold">How it works</p>
+		<p class="text-xl text-neutral-700">
+			A user can create an account and, after signing in, will be guided to create the first property by giving it a name.
+			Adding bookings is very simple: just choose a booking name, check-in and check-out dates, and a colour.
+		</p>
+		<br />
+		<p class="text-xl text-neutral-700">
+			Bookings can be modified or deleted later. In the settings menu, users can create, edit, or delete more properties.
+			The app is fully responsive and looks beautiful on a smartphone, although I prefer using it on my laptop for a better
+			year view.
+		</p>
+	</div>
+	<div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-8">
+		<Image src={howItworks1} alt="screenshot of the register page" height="900" class="shadow col-span-1" quality={80} />
+		<Image src={howItworks2} alt="screenshot of the register page" height="900" class="shadow col-span-1" quality={80} />
+		<Image src={howItworks3} alt="screenshot of the register page" height="900" class="shadow col-span-1" quality={80} />
+		<Image src={howItworks4} alt="screenshot of the register page" height="900" class="shadow col-span-1" quality={80} />
+	</div>
+</section>
+
+<section class="bg-neutral-100 px-4 sm:px-12 py-24 flex flex-col justify-center items-center gap-20">
+	<div class="flex flex-col sm:w-8/12">
+		<p class="text-xl text-neutral-700 leading-10 font-semibold">Future Improvements</p>
+		<p class="text-xl text-neutral-700 sm:w-8/12">
+			I plan to introduce drag-and-drop functionality for easier and more intuitive creation and editing of bookings.
+			Additionally, I want to implement differentiated authorizations so that the calendar can be shared with others
+			without necessarily giving them editing permissions.
+		</p>
+	</div>
+	<div class="px-4 sm:px-12 py-24 flex justify-center items-center gap-20">
+		<LinkButton text="www.yearbookings.site" address="https://www.yearbookings.site" />
+		<LinkButton text="github" address="#" />
+	</div>
+</section>

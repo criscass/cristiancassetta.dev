@@ -1,8 +1,55 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-	content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
+	content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
 	theme: {
+		fontSize: {
+			sm: "0.75rem",
+			base: "1rem",
+			xl: "1.333rem",
+			"2xl": "2.369rem",
+			"3xl": "3.157rem",
+			"4xl": "4.209rem",
+			"5xl": "5.61rem",
+			"8xl": "8rem",
+		},
+		colors: {
+			transparent: "transparent",
+			current: "currentColor",
+			white: "#ffffff",
+			primary: {
+				100: "#EFE9FF",
+				200: "#CDBCF9",
+				300: "#9D7DF1",
+				400: "#774BEA",
+				500: "#5D2CDD",
+				600: "#4212C2",
+				700: "#2A0884",
+				800: "#18044D",
+				900: "#11003E",
+			},
+			neutral: {
+				100: "#F3F1F8",
+				200: "#C1BEC9",
+				300: "#84808E",
+				400: "#676471",
+				500: "#55515F",
+				600: "#3A3644",
+				700: "#1F1C28",
+				800: "#100C19",
+				900: "#030008",
+			},
+			accent1: "#8AC1D0",
+			accent2: "#FE4421",
+			accent3: "#67E831",
+		},
+		fontFamily: {
+			sans: ["Overpass", "system-ui"],
+		},
+		boxShadow: {
+			2: "10px 10px 31px 5px rgba(0,0,0,0.5), 0 35px 60px 15px rgb(0 0 0 / 0.3)",
+			DEFAULT: "0 20px 25px -5px rgb(0 0 0 / 0.3), 0 8px 10px -6px rgb(0 0 0 / 0.3)",
+		},
 		extend: {},
 	},
 	plugins: [],
-}
+};
