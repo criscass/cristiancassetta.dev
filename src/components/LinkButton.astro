@@ -52,4 +52,30 @@ import { Image } from "astro:assets";
 	a {
 		font-size: 1.3rem;
 	}
+
+	@media (max-width: 1024px) {
+		a {
+			font-size: 1.2rem;
+		}
+
+		.arrow-in-button-left {
+			height: 40px;
+			top: 16px;
+		}
+		button:hover .arrow-in-button-left {
+			opacity: 1;
+			left: -30px;
+		}
+		.arrow-in-button-right {
+			height: 40px;
+			top: 16px;
+		}
+		button:hover .arrow-in-button-right {
+			opacity: 1;
+			right: -30px;
+		}
+		button {
+			padding: 1.5rem 3rem;
+		}
+	}
 </style>
