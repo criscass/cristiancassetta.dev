@@ -1,0 +1,38 @@
+---
+import { Image } from "astro:assets";
+import reflair from "../assets/images/screenshots/screenshot-reflair.jpg";
+import LinkButtonBlue from "./LinkButtonBlue.astro";
+---
+
+<section class="bg-accent1 px-4 sm:px-12 py-40">
+	<div class="flex flex-col gap-12 lg:grid lg:grid-cols-12 items-center">
+		<div class="col-span-5 flex flex-col sm:flex-row lg:block">
+			<div class="border-s-2 px-4 mb-24 inline-flex flex-col">
+				<h2 class="text-3xl text-neutral-900 leading-10">Reflair interiors</h2>
+				<h3 class="text-2xl text-neutral-700">Static site</h3>
+			</div>
+
+			<p class="text-xl w-10/12 text-neutral-700">
+				Mia Lambrechts, a highly skilled interior designer based in Pretoria, South Africa, needed someone to update and
+				maintain her WordPress website regularly. When I began working on it, I quickly noticed that the website was
+				painfully slow. Together with Mia, we decided to rewrite the entire website in code while preserving the original
+				design. I chose to use Astro, which is excellent for static websites, along with Alpine.js and Tailwind CSS. The
+				result is a lightning-fast website that is very easy to update in the future, thanks to Astro's powerful content
+				templating capabilities.
+			</p>
+		</div>
+		<div class="col-span-7 mt-16 sm:mt-2">
+			<Image
+				src={reflair}
+				alt="The landing page of Mis Lambrecht Interior designer"
+				width="1400"
+				quality="max"
+				class="shadow"
+			/>
+		</div>
+	</div>
+	<div class="px-4 sm:px-12 py-8 sm:py-24 flex flex-col sm:flex sm:flex-row justify-center items-center gap-8 sm:gap-20">
+		<LinkButtonBlue text="reflair website" address="https://reflair-website.vercel.app/" />
+		<LinkButtonBlue text="github" address="https://github.com/criscass/reflair-website" />
+	</div>
+</section>

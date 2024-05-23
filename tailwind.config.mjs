@@ -40,7 +40,7 @@ export default {
 			},
 			accent1: "#8AC1D0",
 			accent2: "#FE4421",
-			accent3: "#67E831",
+			accent3: "#B82929",
 		},
 		fontFamily: {
 			sans: ["Overpass", "system-ui"],

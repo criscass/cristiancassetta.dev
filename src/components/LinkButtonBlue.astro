@@ -1,15 +1,15 @@
 ---
 const { text } = Astro.props;
 const { address } = Astro.props;
-import arrow2 from "../assets/SVG/arrow2.svg";
+import arrow3 from "../assets/SVG/arrow3.svg";
 import { Image } from "astro:assets";
 ---
 
 <div>
 	<button class="bg-accent3 flex gap-8 px-12 py-4 rounded-xl shadow">
-		<Image src={arrow2} width="100" alt="An arrow pointing to the button from the left" class="arrow-in-button-left" />
+		<Image src={arrow3} width="100" alt="An arrow pointing to the button from the left" class="arrow-in-button-left" />
 		<a href={address} target="_blank" rel="noopener noreferrer" class="text-neutral-100">{text}</a>
-		<Image src={arrow2} width="100" alt="An arrow pointing to the button from the right" class="arrow-in-button-right" />
+		<Image src={arrow3} width="100" alt="An arrow pointing to the button from the right" class="arrow-in-button-right" />
 	</button>
 </div>
 
