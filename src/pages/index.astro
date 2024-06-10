@@ -7,6 +7,7 @@ import YearBookings from "../components/YearBookings.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
+<!-- <div class="preloader"></div> -->
 <BaseLayout>
 	<Hero />
 	<Projects />
@@ -14,3 +15,35 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 	<Reflair />
 	<Henning />
 </BaseLayout>
+
+<style>
+	/* .preloader {
+		position: fixed;
+		top: 0;
+		width: 100%;
+		height: 100vh;
+		background-color: white;
+		display: flex;
+		align-items: start;
+		justify-content: start;
+		z-index: 100;
+		padding: 3rem; */
+
+	/* transition:
+			opacity 0.5s ease,
+			visibility 0.5s ease; */
+	/* } */
+
+	/* .preloader-hidden {
+		opacity: 0;
+		visibility: hidden;
+	} */
+</style>
+
+<!-- Hides the preloader when page has loaded -->
+<script>
+	// window.addEventListener("load", () => {
+	// 	const preloader = document.querySelector(".preloader");
+	// 	preloader?.classList.add("preloader-hidden");
+	// });
+</script>

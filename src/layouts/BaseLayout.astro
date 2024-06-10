@@ -13,8 +13,13 @@ const { image, title = SITE_TITLE, description = SITE_DESCRIPTION, ogType } = As
 		<BaseHead title={title} description={description} image={image} , ogType={ogType} />
 		{TRANSITION_API && <ViewTransitions />}
 	</head>
+
 	<body class="bg-neutral-100">
 		<Header />
 		<slot />
+		<script>
+			import gsap from "gsap";
+			window.gsap = gsap;
+		</script>
 	</body>
 </html>

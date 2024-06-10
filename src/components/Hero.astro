@@ -1,21 +1,96 @@
 ---
 import { Image } from "astro:assets";
+
 import heroCris from "../assets/images/avatar-cris.png";
 ---
 
-<section class="grid grid-cols-2 mt-12 lg:mt-24 justify-end">
-	<div class="col-span-1 flex items-center justify-end">
-		<div class="w-11/12">
-			<h2 class="text-[1.2rem] lg:text-2xl xl:text-3xl font-semibold ml-0 md:ml-1 lg:ml-3 text-neutral-700 leading-5">
-				Hi, my name is
-			</h2>
-			<h1 class="text-[1.4rem] sm:text-2xl lg:text-3xl xl:text-4xl font-bold text-neutral-700">Cristian Cassetta</h1>
-			<h3 class="text-base lg:text-xl text-neutral-700">
-				I'm a frontend web developer who loves bringing creative ideas to life on the web.
-			</h3>
+<div class="hero">
+	<section class="grid grid-cols-2 mt-12 lg:mt-24">
+		<div class="col-span-1 flex items-center justify-end">
+			<div class="w-11/12">
+				<h2
+					class="text-[1.2rem] lg:text-2xl xl:text-3xl font-semibold ml-0 md:ml-1 lg:ml-3 text-neutral-700 leading-5 title-1"
+				>
+					Hi, my name is
+				</h2>
+				<h1 class="text-[1.4rem] sm:text-2xl lg:text-3xl xl:text-4xl font-bold text-neutral-700 title-2">
+					Cristian Cassetta
+				</h1>
+				<h3 class="text-base lg:text-xl text-neutral-700 title-3">
+					I'm a frontend web developer who loves bringing creative ideas to life on the web.
+				</h3>
+			</div>
 		</div>
-	</div>
-	<div class="col-span-1 justify-self-end">
-		<Image src={heroCris} alt="A very handsome portrait illustration of Cristian Cassetta" width="500" quality={"max"} />
-	</div>
-</section>
+
+		<div class="col-span-1 justify-self-end">
+			<Image
+				src={heroCris}
+				alt="A very handsome portrait illustration of Cristian Cassetta"
+				width="500"
+				quality={"max"}
+				class="avatar"
+				id="heroImage"
+			/>
+		</div>
+	</section>
+</div>
+
+<style>
+	.hero {
+		visibility: hidden;
+	}
+</style>
+<script>
+	document.addEventListener("astro:page-load", () => {
+		const hero = document.querySelector(".hero");
+		const image = document.getElementById("heroImage");
+
+		// animation of the hero section would start only when the hero image is loaded
+
+		const observer = new IntersectionObserver(
+			(entries) => {
+				entries.forEach((entry) => {
+					if (entry.isIntersecting) {
+						image.addEventListener("load", () => {
+							hero.style.visibility = "visible";
+
+							const timeline = gsap.timeline({ defaults: { opacity: 0 } });
+
+							timeline
+								.from(".hero", { ease: "linear", autoAlpha: 0 })
+								.from(".title-2", { x: -80, y: 20, scale: 2, ease: "back" })
+								.from(".title-1", { x: 80, y: -30, scale: 2, ease: "back" }, 0)
+								.from(".title-3", { y: 60, scale: 2, ease: "back" })
+								.from(".avatar", { opacity: 0, duration: 1 }, 0.2);
+						});
+						image.src = image.src; // Trigger load event for cached images
+						observer.unobserve(image);
+					}
+				});
+			},
+			{ threshold: 0.1 }
+		);
+
+		observer.observe(image);
+	});
+</script>
+
+<!-- <script>
+	document.addEventListener("astro:page-load", () => {
+		const hero = document.querySelector(".hero");
+		const image = document.getElementById("heroImage");
+
+		image.addEventListener("load", () => {
+			hero.style.visibility = "visible";
+
+			const timeline = gsap.timeline({ defaults: { opacity: 0 } });
+
+			timeline
+				.from(".hero", { ease: "linear", autoAlpha: 0 })
+				.from(".title-2", { x: -80, y: 20, scale: 2, ease: "back" })
+				.from(".title-1", { x: 80, y: -30, scale: 2, ease: "back" }, 0)
+				.from(".title-3", { y: 60, scale: 2, ease: "back" })
+				.from(".avatar", { opacity: 0, duration: 1 }, 0.2);
+		});
+	});
+</script> -->
