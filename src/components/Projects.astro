@@ -11,6 +11,24 @@ import { Image } from "astro:assets";
 		class="h-40 sm:h-52 md:h-60 lg:h-72 ml-8 md:ml-16 xl:ml-36 arrow"
 	/>
 	<div class="px-12 py-24">
-		<h1 class="text-xl md:text-2xl text-neutral-700">My latest projects</h1>
+		<h1 class="text-xl md:text-2xl text-neutral-700" id="latestProjects">My latest projects</h1>
 	</div>
 </section>
+
+<script>
+	document.addEventListener("astro:page-load", () => {
+		const mm = gsap.matchMedia();
+
+		// do not animate under 600px
+
+		mm.add("(min-width: 600px)", () => {
+			let tween = gsap.from("#latestProjects", {
+				x: -260,
+				opacity: 0,
+				duration: 0.7,
+				ease: "power1",
+				scrollTrigger: { trigger: "#latestProjects", start: "top 95%" },
+			});
+		});
+	});
+</script>

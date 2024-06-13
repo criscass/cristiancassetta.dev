@@ -39,58 +39,53 @@ import heroCris from "../assets/images/avatar-cris.png";
 	.hero {
 		visibility: hidden;
 	}
+	@media (max-width: 600px) {
+		.hero {
+			visibility: visible;
+		}
+	}
 </style>
 <script>
 	document.addEventListener("astro:page-load", () => {
-		const hero = document.querySelector(".hero");
-		const image = document.getElementById("heroImage");
+		const mm = gsap.matchMedia();
 
-		// animation of the hero section would start only when the hero image is loaded
+		// do not animate under 600px
 
-		const observer = new IntersectionObserver(
-			(entries) => {
-				entries.forEach((entry) => {
-					if (entry.isIntersecting) {
-						image.addEventListener("load", () => {
-							hero.style.visibility = "visible";
+		mm.add("(min-width: 600px)", () => {
+			const hero = document.querySelector(".hero") as HTMLElement;
+			const image = document.getElementById("heroImage") as HTMLImageElement;
 
-							const timeline = gsap.timeline({ defaults: { opacity: 0 } });
+			if (!hero || !image) {
+				return;
+			}
 
-							timeline
-								.from(".hero", { ease: "linear", autoAlpha: 0 })
-								.from(".title-2", { x: -80, y: 20, scale: 2, ease: "back" })
-								.from(".title-1", { x: 80, y: -30, scale: 2, ease: "back" }, 0)
-								.from(".title-3", { y: 60, scale: 2, ease: "back" })
-								.from(".avatar", { opacity: 0, duration: 1 }, 0.2);
-						});
-						image.src = image.src; // Trigger load event for cached images
-						observer.unobserve(image);
-					}
-				});
-			},
-			{ threshold: 0.1 }
-		);
+			// animation of the hero section would start only when the hero image is loaded
 
-		observer.observe(image);
-	});
-</script>
+			const observer = new IntersectionObserver(
+				(entries) => {
+					entries.forEach((entry) => {
+						if (entry.isIntersecting) {
+							image.addEventListener("load", () => {
+								hero.style.visibility = "visible";
 
-<!-- <script>
-	document.addEventListener("astro:page-load", () => {
-		const hero = document.querySelector(".hero");
-		const image = document.getElementById("heroImage");
+								const timeline = gsap.timeline({ defaults: { opacity: 0 } });
 
-		image.addEventListener("load", () => {
-			hero.style.visibility = "visible";
+								timeline
+									.from(".hero", { ease: "linear", autoAlpha: 0 })
+									.from(".title-2", { x: -80, y: 20, scale: 2, ease: "back" })
+									.from(".title-1", { x: 80, y: -30, scale: 2, ease: "back" }, 0)
+									.from(".title-3", { y: 60, scale: 2, ease: "back" })
+									.from(".avatar", { opacity: 0, duration: 1 }, 0.2);
+							});
+							image.src = image.src; // Trigger load event for cached images
+							observer.unobserve(image);
+						}
+					});
+				},
+				{ threshold: 0.1 }
+			);
 
-			const timeline = gsap.timeline({ defaults: { opacity: 0 } });
-
-			timeline
-				.from(".hero", { ease: "linear", autoAlpha: 0 })
-				.from(".title-2", { x: -80, y: 20, scale: 2, ease: "back" })
-				.from(".title-1", { x: 80, y: -30, scale: 2, ease: "back" }, 0)
-				.from(".title-3", { y: 60, scale: 2, ease: "back" })
-				.from(".avatar", { opacity: 0, duration: 1 }, 0.2);
+			observer.observe(image);
 		});
 	});
-</script> -->
+</script>

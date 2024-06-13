@@ -1,0 +1,39 @@
+---
+import { Image } from "astro:assets";
+import aboutProfile from "../assets/images/about_profile.jpg";
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout linksMenu={["home"]}>
+	<section class="px-8 sm:px-24 mt-16 mb-24">
+		<h1 class="text-2xl mb-16 text-neutral-700">About me</h1>
+		<div class="relative">
+			<div class="float-none sm:float-right sm:ml-8 mb-8">
+				<Image src={aboutProfile} alt="A recent photo portrait of Cristian Cassetta" width="300" quality={"max"} />
+			</div>
+			<p class="text-xl text-neutral-700">
+				My name is Cristian Cassetta.<br /><br />
+				When I was 8 years old, in 1984, my parents bought me a Commodore 16. I was obsessed. I would spend hours copying pages
+				of BASIC code just to see an extremely pixelated hot air balloon fly across the screen. What excitement! <br /><br
+				/>
+				Seven years later, when I was 15, I upgraded to an Amiga 500. I managed to get hold of a software called Amos to make
+				video games. The documentation was all in English, so I had to translate it word by word using my dictionary to barely
+				understand it. But it was a lot of fun!<br /><br /> My first job after school was for a small start-up in Milan, where
+				I was in charge of digitizing and retouching a massive database of photo films for the DeAgostini group using Photoshop.
+				While I was there, I started experimenting with HTML and CSS and built a few websites. Macromedia Flash was the hot front-end
+				technology at the time, and I learned to create some cool animations using ActionScript.<br /><br /> A few years later,
+				I started using Joomla and WordPress. After that, I took a break. I worked in the hospitality industry in England and
+				then back in Italy for the next 20 years, with a brief period in 2007 when I worked for Google for 2 years as a "web
+				quality rater." I didn't need to write code, but I had to evaluate websites to see if they deserved their ranking. I
+				needed to read the code to see if they were using unethical techniques to climb the rankings. It was a fully remote position,
+				quite unique for that time. <br /><br />For the last 15 years, I managed an exclusive villa in the Tuscan Hills,
+				which was the perfect setup to raise my two newborn daughters. Web development remained a hobby during that time
+				until four years ago, when, like many others around the world, I was stuck at home, rethinking my career choices. I
+				decided to rekindle my genuine interest in writing code and studied HTML, CSS, JavaScript, then TypeScript, React,
+				Svelte, Astro, SQL, Git, and more.<br /><br /> I've made a few websites and apps, some of which are represented in this
+				portfolio. On June 1, 2024, I moved with my entire family, my South African wife and our two beautiful, smart daughters—to
+				the Netherlands in search of a job as a frontend web developer. The rest is yet to come.
+			</p>
+		</div>
+	</section>
+</BaseLayout>

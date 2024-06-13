@@ -6,22 +6,19 @@ import LinkButton from "./LinkButton.astro";
 
 <section class="bg-neutral-100 px-4 sm:px-12 py-40">
 	<div class="flex flex-col gap-12 lg:grid lg:grid-cols-12 items-center">
-		<div class="col-span-5 flex flex-col sm:flex-row lg:block">
-			<div class="border-s-2 px-4 mb-24 inline-flex flex-col">
-				<h2 class="text-3xl text-neutral-900 leading-10">henningviljoen.com</h2>
-				<h3 class="text-2xl text-neutral-700">Static site</h3>
+		<div class="col-span-5 flex flex-col lg:flex-row lg:block">
+			<div class="border-s-2 px-4 mb-24 inline-flex flex-col" id="border2">
+				<h2 class="text-3xl text-neutral-900 leading-10" id="text-3">henningviljoen.com</h2>
+				<h3 class="text-2xl text-neutral-700" id="text-4">Static site</h3>
 			</div>
 
 			<p class="text-xl w-10/12 text-neutral-700">
 				Henning, a sole attorney based in the picturesque city of Hermanus, South Africa, specializes in labor law. He
-				required a straightforward website for use in social media marketing campaigns.
+				required a straightforward website for use in social media marketing campaigns. <br /> I selected an Astro template and
+				extensively customized it to meet the specific needs of the project. <br />Since the website had to be available in
+				both English and Afrikaans, I utilized Astro's internationalization features to simplify this task.<br /> The website
+				is hosted on Vercel.
 			</p>
-			<p class="text-xl w-10/12 text-neutral-700">
-				I selected an Astro template and extensively customized it to meet the specific needs of the project. Since the
-				website had to be available in both English and Afrikaans, I utilized Astro's internationalization features to
-				simplify this task.
-			</p>
-			<p class="text-xl w-10/12 text-neutral-700">The website is hosted on Vercel.</p>
 		</div>
 		<div class="col-span-7 mt-16 sm:mt-2">
 			<Image
@@ -38,3 +35,24 @@ import LinkButton from "./LinkButton.astro";
 		<LinkButton text="github" address="https://github.com/criscass/henning-viljoen" />
 	</div>
 </section>
+
+<script>
+	document.addEventListener("astro:page-load", () => {
+		const mm = gsap.matchMedia();
+		mm.add("(min-width: 600px)", () => {
+			let tl = gsap
+				.timeline({
+					scrollTrigger: {
+						trigger: "#border2",
+						start: "top 75%",
+						end: "+=200",
+						scrub: 1,
+
+						once: true,
+					},
+				})
+				.from("#text-3", { y: 200, opacity: 0, ease: "back" })
+				.from("#text-4", { y: 200, opacity: 0, ease: "back" });
+		});
+	});
+</script>
