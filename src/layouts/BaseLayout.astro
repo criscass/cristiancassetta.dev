@@ -22,9 +22,11 @@ const { image, title = SITE_TITLE, description = SITE_DESCRIPTION, ogType, links
 		<script>
 			import gsap from "gsap";
 			import { ScrollTrigger } from "gsap/ScrollTrigger";
+			const gsapAny: any = gsap;
+			gsapAny.registerPlugin(ScrollTrigger);
+			console.log("window.gsap", window.gsap);
 
-			gsap.registerPlugin(ScrollTrigger);
-			window.gsap = gsap;
+			window.gsap = gsapAny;
 		</script>
 	</body>
 </html>
