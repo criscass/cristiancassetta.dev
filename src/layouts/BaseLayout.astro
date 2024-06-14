@@ -15,7 +15,7 @@ const { image, title = SITE_TITLE, description = SITE_DESCRIPTION, ogType, links
 		{TRANSITION_API && <ViewTransitions />}
 	</head>
 
-	<body class="bg-neutral-100">
+	<body class="bg-neutral-100 overflow-x-hidden">
 		<BaseHeader linksMenu={linksMenu} />
 		<slot />
 		<BaseFooter linksMenu={linksMenu} />
