@@ -5,30 +5,30 @@ import heroCris from "../assets/images/avatar-cris.png";
 ---
 
 <div class="hero">
-	<section class="grid grid-cols-2 mt-12 lg:mt-24">
-		<div class="col-span-1 flex items-center justify-end">
-			<div class="w-11/12">
+	<section class="grid md:grid-cols-2 mt-12 h-4/5">
+		<div class="md:col-span-1 md:mt-16 order-2 md:order-1">
+			<div class="flex flex-col px-8 lg:mt-12">
 				<h2
-					class="text-[1.2rem] lg:text-2xl xl:text-3xl font-semibold ml-0 md:ml-1 lg:ml-3 text-neutral-700 leading-5 title-1"
+					class="text-3xl lg:text-4xl font-semibold ml-4 text-neutral-700 title-1 alegreya-bold -translate-y-48 md:translate-y-0"
 				>
-					Hi, my name is
+					Hi,
 				</h2>
-				<h1 class="text-[1.4rem] sm:text-2xl lg:text-3xl xl:text-4xl font-bold text-neutral-700 title-2">
-					Cristian Cassetta
-				</h1>
-				<h3 class="text-base lg:text-xl text-neutral-700 title-3">
+				<h2 class="text-3xl lg:mt-16 lg:text-4xl mt-8 text-center font-semibold text-neutral-700 title-1 alegreya-bold">
+					my name is
+				</h2>
+				<h1 class="alegreya-normal lg:mt-8 lg:text-3xl text-2xl text-center text-neutral-700 title-2">Cristian Cassetta</h1>
+				<h3 class="text-xl lg:text-[1.5rem] text-center alegreya-light text-neutral-700 title-3">
 					I'm a frontend web developer who loves bringing creative ideas to life on the web.
 				</h3>
 			</div>
 		</div>
 
-		<div class="col-span-1 justify-self-end">
+		<div class="md:col-span-1 avatar order-1 md:order-2 mx-auto">
 			<Image
 				src={heroCris}
 				alt="A very handsome portrait illustration of Cristian Cassetta"
-				width="500"
+				class=""
 				quality={"max"}
-				class="avatar"
 				id="heroImage"
 			/>
 		</div>
@@ -36,56 +36,86 @@ import heroCris from "../assets/images/avatar-cris.png";
 </div>
 
 <style>
+	.alegreya-bold {
+		font-family: "Alegreya", serif;
+		font-optical-sizing: auto;
+		font-weight: 600;
+		font-style: normal;
+		line-height: 1rem;
+	}
+	.alegreya-normal {
+		font-family: "Alegreya", serif;
+		font-optical-sizing: auto;
+		font-weight: 500;
+		font-style: normal;
+		line-height: 5rem;
+	}
+	.alegreya-light {
+		font-family: "Alegreya", serif;
+		font-optical-sizing: auto;
+		font-weight: 300;
+		font-style: normal;
+		line-height: 2rem;
+	}
 	.hero {
 		visibility: hidden;
 	}
-	@media (max-width: 600px) {
+	@media (max-width: 639px) {
 		.hero {
 			visibility: visible;
 		}
 	}
+	@media (max-width: 767px) {
+		.avatar {
+			width: 350px;
+			height: 350px;
+		}
+	}
+	@media (max-width: 600px) {
+		.avatar {
+			width: 250px;
+			height: 250px;
+		}
+	}
 </style>
+
 <script>
 	document.addEventListener("astro:page-load", () => {
 		const mm = gsap.matchMedia();
 
-		// do not animate under 600px
+		const hero = document.querySelector(".hero") as HTMLElement;
+		const image = document.getElementById("heroImage") as HTMLImageElement;
 
-		mm.add("(min-width: 600px)", () => {
-			const hero = document.querySelector(".hero") as HTMLElement;
-			const image = document.getElementById("heroImage") as HTMLImageElement;
+		if (!hero || !image) {
+			return;
+		}
 
-			if (!hero || !image) {
-				return;
-			}
+		// animation of the hero section would start only when the hero image is loaded
 
-			// animation of the hero section would start only when the hero image is loaded
+		const observer = new IntersectionObserver(
+			(entries) => {
+				entries.forEach((entry) => {
+					if (entry.isIntersecting) {
+						image.addEventListener("load", () => {
+							hero.style.visibility = "visible";
 
-			const observer = new IntersectionObserver(
-				(entries) => {
-					entries.forEach((entry) => {
-						if (entry.isIntersecting) {
-							image.addEventListener("load", () => {
-								hero.style.visibility = "visible";
+							const timeline = gsap.timeline({ defaults: { opacity: 0 } });
 
-								const timeline = gsap.timeline({ defaults: { opacity: 0 } });
+							timeline
+								.from(".hero", { ease: "linear", autoAlpha: 0 })
+								.from(".title-2", { x: -80, y: 20, scale: 2, ease: "back" })
+								.from(".title-1", { x: 80, y: -30, scale: 2, ease: "back" }, 0)
+								.from(".title-3", { y: 60, scale: 2, ease: "back" })
+								.from(".avatar", { opacity: 0, duration: 1 }, 0.2);
+						});
+						image.src = image.src; // Trigger load event for cached images
+						observer.unobserve(image);
+					}
+				});
+			},
+			{ threshold: 0.1 }
+		);
 
-								timeline
-									.from(".hero", { ease: "linear", autoAlpha: 0 })
-									.from(".title-2", { x: -80, y: 20, scale: 2, ease: "back" })
-									.from(".title-1", { x: 80, y: -30, scale: 2, ease: "back" }, 0)
-									.from(".title-3", { y: 60, scale: 2, ease: "back" })
-									.from(".avatar", { opacity: 0, duration: 1 }, 0.2);
-							});
-							image.src = image.src; // Trigger load event for cached images
-							observer.unobserve(image);
-						}
-					});
-				},
-				{ threshold: 0.1 }
-			);
-
-			observer.observe(image);
-		});
+		observer.observe(image);
 	});
 </script>

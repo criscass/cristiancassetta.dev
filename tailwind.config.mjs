@@ -41,6 +41,7 @@ export default {
 			accent1: "#8AC1D0",
 			accent2: "#FE4421",
 			accent3: "#B82929",
+			accent4: "#0A1928",
 		},
 		fontFamily: {
 			sans: ["Overpass", "system-ui"],
