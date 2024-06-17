@@ -5,25 +5,23 @@ import heroCris from "../assets/images/avatar-cris.png";
 ---
 
 <div class="hero">
-	<section class="grid md:grid-cols-2 mt-12 h-4/5">
-		<div class="md:col-span-1 md:mt-16 order-2 md:order-1">
+	<section class="grid md:grid-cols-12 mt-4 h-4/5">
+		<div class="md:col-span-7 md:mt-16 order-2 md:order-1">
 			<div class="flex flex-col px-8 lg:mt-12">
 				<h2
-					class="text-3xl lg:text-4xl font-semibold ml-4 text-neutral-700 title-1 alegreya-bold -translate-y-48 md:translate-y-0"
+					class="text-3xl xl:text-5xl font-semibold ml-4 md:ml-16 text-neutral-700 title-1 alegreya-bold -translate-y-48 md:translate-y-0"
 				>
 					Hi,
 				</h2>
-				<h2 class="text-3xl lg:mt-16 lg:text-4xl mt-8 text-center font-semibold text-neutral-700 title-1 alegreya-bold">
-					my name is
-				</h2>
-				<h1 class="alegreya-normal lg:mt-8 lg:text-3xl text-2xl text-center text-neutral-700 title-2">Cristian Cassetta</h1>
-				<h3 class="text-xl lg:text-[1.5rem] text-center alegreya-light text-neutral-700 title-3">
+				<h2 class="text-3xl xl:text-5xl text-center font-semibold text-neutral-700 title-1 alegreya-bold">my name is</h2>
+				<h1 class="alegreya-normal xl:text-4xl text-2xl text-center text-neutral-700 title-2">Cristian Cassetta</h1>
+				<h3 class="text-xl mb-8 xl:text-2xl text-center alegreya-light text-neutral-700 title-3">
 					I'm a frontend web developer who loves bringing creative ideas to life on the web.
 				</h3>
 			</div>
 		</div>
 
-		<div class="md:col-span-1 avatar order-1 md:order-2 mx-auto">
+		<div class="md:col-span-5 avatar order-1 md:order-2 mx-auto">
 			<Image
 				src={heroCris}
 				alt="A very handsome portrait illustration of Cristian Cassetta"
@@ -39,23 +37,23 @@ import heroCris from "../assets/images/avatar-cris.png";
 	.alegreya-bold {
 		font-family: "Alegreya", serif;
 		font-optical-sizing: auto;
-		font-weight: 600;
+		font-weight: 700;
 		font-style: normal;
-		line-height: 1rem;
+		line-height: 1em;
 	}
 	.alegreya-normal {
 		font-family: "Alegreya", serif;
 		font-optical-sizing: auto;
-		font-weight: 500;
+		font-weight: 400;
 		font-style: normal;
-		line-height: 5rem;
+		line-height: 2em;
 	}
 	.alegreya-light {
 		font-family: "Alegreya", serif;
 		font-optical-sizing: auto;
 		font-weight: 300;
 		font-style: normal;
-		line-height: 2rem;
+		line-height: 1.3em;
 	}
 	.hero {
 		visibility: hidden;
@@ -63,6 +61,9 @@ import heroCris from "../assets/images/avatar-cris.png";
 	@media (max-width: 639px) {
 		.hero {
 			visibility: visible;
+		}
+		.alegreya-bold {
+			line-height: 0.5em;
 		}
 	}
 	@media (max-width: 767px) {
