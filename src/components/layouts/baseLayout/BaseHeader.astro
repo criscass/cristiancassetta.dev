@@ -2,14 +2,14 @@
 const { linksMenu } = Astro.props;
 ---
 
-<section class="p-8">
+<section class="p-4 bg-neutral-700">
 	<ul class="flex justify-end gap-8 lg:gap-16 mr-4 lg:mr-12">
 		{
 			linksMenu.map((link: string) => (
 				<li>
 					<a
 						href={link === "home" ? "/" : `/${link}`}
-						class="text-base lg:text-xl cursor-pointer hover:text-neutral-900  text-neutral-500"
+						class="text-base lg:text-xl cursor-pointer hover:text-neutral-100  text-neutral-200"
 					>
 						{link.toUpperCase()}
 					</a>

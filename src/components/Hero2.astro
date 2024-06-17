@@ -1,0 +1,57 @@
+---
+import { Image } from "astro:assets";
+
+import heroCris from "../assets/images/avatar-cris2.png";
+---
+
+<section class="hero h-screen">
+	<div class="bg-neutral-200">
+		<!-- "Hi," + Image -->
+		<div class="grid grid-cols-12 translate-y-8">
+			<h3 class="col-span-4 justify-self-center sm:justify-self-end mt-0 sm:mt-16 text-2xl sm:text-4xl alegreya-bold">
+				Hi,
+			</h3>
+			<div class="col-span-4 justify-self-center">
+				<Image
+					src={heroCris}
+					alt="A very handsome portrait illustration of Cristian Cassetta"
+					width="300"
+					height="300"
+					quality={"max"}
+					class="avatar"
+					id="heroImage"
+				/>
+			</div>
+		</div>
+	</div>
+	<div class="flex flex-col justify-center items-center mt-8 pt-8">
+		<h3 class="text-2xl sm:text-4xl alegreya-bold">My name is</h3>
+		<h3 class="text-2xl sm:text-3xl alegreya-normal">Cristian Cassetta</h3>
+	</div>
+	<div class="flex flex-col justify-center items-center mt-8">
+		<h3 class="text-lg sm:text-2xl alegreya-normal leading-16 w-4/5 sk:w-3/5 text-center">
+			I'm a frontend web developer
+		</h3>
+		<h3 class="text-lg sm:text-2xl alegreya-normal leading-16 w-4/5 sk:w-3/5 text-center">
+			who loves bringing creative ideas to life
+		</h3>
+		<h3 class="text-lg sm:text-2xl alegreya-normal leading-16 w-4/5 sk:w-3/5 text-center">on the web</h3>
+	</div>
+</section>
+
+<style>
+	.alegreya-bold {
+		font-family: "Alegreya", serif;
+		font-optical-sizing: auto;
+		font-weight: 600;
+		font-style: normal;
+		line-height: 4rem;
+	}
+	.alegreya-normal {
+		font-family: "Alegreya", serif;
+		font-optical-sizing: auto;
+		font-weight: 500;
+		font-style: normal;
+		line-height: 3rem;
+	}
+</style>
